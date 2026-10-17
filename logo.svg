@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-6 2 282 76" width="282" height="76" role="img" aria-label="GOSHA by TECTO BAKERY">
+  <title>GOSHA by TECTO BAKERY</title>
+  <g fill="none" stroke="#141111" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <!-- G -->
+    <path d="M33.3 17.1 A20 20 0 1 0 38 30 L23 30"/>
+    <!-- O -->
+    <circle cx="80" cy="30" r="20"/>
+    <!-- S -->
+    <path d="M145.7 15 A10 10 0 1 0 137 30 A10 10 0 1 1 128.3 45"/>
+    <!-- H -->
+    <path d="M172 10 V50 M202 10 V50 M172 30 H202"/>
+    <!-- A (no crossbar) -->
+    <path d="M226 50 L246 10 L266 50"/>
+  </g>
+  <text x="133" y="70" text-anchor="middle" fill="#141111" font-family="Jost, Outfit, 'Helvetica Neue', Arial, sans-serif" font-size="8.5" letter-spacing="2.4"><tspan font-size="7.5" letter-spacing="1">by </tspan>TECTO BAKERY</text>
+</svg>

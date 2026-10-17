@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">GOSHA by TECTO BAKERY - lielākie čebureki Latvijā, Daugavpils</title>
+<meta name="description" content="GOSHA by TECTO BAKERY, Mihoelsa iela 68, Daugavpils. Lielākie čebureki Latvijā, peremjači, hačapuri un deserti. Gruzīnu, itāļu un Eiropas virtuve.">
+<script>
+  (function(){
+    var d = document.documentElement;
+    d.classList.add('js');
+    var t = 'light';
+    try{ if(localStorage.getItem('gosha-theme') === 'dark') t = 'dark'; }catch(e){}
+    d.setAttribute('data-theme', t);
+  })();
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F6F1E9;
+    --panel:#EDE4D6;
+    --card:#FFFDF9;
+    --ink:#141111;
+    --ink-soft:#6A5F55;
+    --line:rgba(20,17,17,.14);
+    --accent:#B6402A;
+    --accent-hover:#9A3220;
+    --on-accent:#FFF7EF;
+    --gold:#C98B3B;
+    --gold-deep:#97621E;
+    --dark-card:#141111;
+    --shadow:0 28px 55px -34px rgba(40,24,12,.45);
+    --font-head:'Fraunces',Georgia,'Times New Roman',serif;
+    --font-body:'Outfit','Segoe UI',system-ui,-apple-system,'Helvetica Neue',sans-serif;
+    --maxw:1180px;
+    --fade:.25s;
+    --fade-theme:.45s;
+    color-scheme: light;
+  }
+  :root[data-theme="dark"]{
+    --bg:#0E0C0B;
+    --panel:#161311;
+    --card:#1C1815;
+    --ink:#F3ECE2;
+    --ink-soft:#B3A698;
+    --line:rgba(243,236,226,.13);
+    --accent:#E0603F;
+    --accent-hover:#F07A5A;
+    --on-accent:#170C08;
+    --gold:#E0A957;
+    --gold-deep:#E0A957;
+    --dark-card:#211C18;
+    --shadow:0 28px 55px -34px rgba(0,0,0,.9);
+    color-scheme: dark;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;transition-delay:0s !important;}
+  }
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background-color var(--fade-theme) ease,color var(--fade-theme) ease;}
+  img,svg{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;transition:color var(--fade) ease,background-color var(--fade) ease,border-color var(--fade) ease,opacity var(--fade) ease;}
+  h1,h2,h3,h4{font-family:var(--font-head);font-weight:500;margin:0;color:var(--ink);letter-spacing:-.015em;font-variation-settings:"opsz" 120;transition:color var(--fade-theme) ease;}
+  h1 em,h2 em{font-style:italic;font-weight:400;color:var(--accent);transition:color var(--fade-theme) ease;}
+  p{margin:0;}
+  ul{margin:0;padding:0;list-style:none;}
+  button{font-family:inherit;cursor:pointer;transition:color var(--fade) ease,background-color var(--fade) ease,border-color var(--fade) ease,opacity var(--fade) ease;}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+  section[id]{scroll-margin-top:72px;}
+
+  .skip-link{position:absolute;left:-9999px;top:0;background:var(--accent);color:var(--on-accent);padding:.75rem 1.25rem;z-index:300;border-radius:0 0 8px 0;font-weight:600;}
+  .skip-link:focus{left:0;}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(1.25rem,4vw,3rem);}
+
+  .kicker{font-size:.74rem;font-weight:500;color:var(--gold-deep);letter-spacing:.3em;text-transform:uppercase;display:inline-flex;align-items:center;gap:.75rem;transition:color var(--fade-theme) ease;}
+  .kicker::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor;display:inline-block;}
+
+  /* header */
+  header{position:sticky;top:0;z-index:200;background:color-mix(in srgb, var(--bg) 88%, transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);transition:background-color var(--fade-theme) ease,border-color var(--fade-theme) ease;}
+  .nav-row{display:flex;align-items:center;gap:1.5rem;padding-top:.85rem;padding-bottom:.85rem;}
+  .brand{display:flex;align-items:center;flex:none;}
+  .brand-logo{height:36px;width:auto;display:block;transition:filter var(--fade-theme) ease,opacity var(--fade) ease;}
+  .brand:hover .brand-logo{opacity:.7;}
+  [data-theme="dark"] .brand-logo{filter:invert(1);}
+  nav.primary{display:flex;align-items:center;justify-content:center;gap:2.2rem;flex:1;}
+  nav.primary a{font-size:.86rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);position:relative;padding:.2rem 0;}
+  nav.primary a:hover{color:var(--ink);}
+  nav.primary a::after{content:"";position:absolute;left:50%;bottom:-8px;width:5px;height:5px;margin-left:-2.5px;border-radius:50%;background:var(--accent);opacity:0;transition:opacity var(--fade) ease;}
+  nav.primary a:hover::after{opacity:1;}
+  .header-actions{display:flex;align-items:center;gap:.75rem;margin-left:auto;}
+
+  .lang-switch{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;transition:border-color var(--fade-theme) ease;}
+  .lang-switch button{background:none;border:none;padding:.4rem .7rem;font-size:.72rem;font-weight:600;letter-spacing:.08em;color:var(--ink-soft);transition:background-color var(--fade) ease,color var(--fade) ease;}
+  .lang-switch button:hover{color:var(--ink);background:color-mix(in srgb, var(--ink) 6%, transparent);}
+  .lang-switch button[aria-pressed="true"]{background:var(--ink);color:var(--bg);}
+
+  .icon-btn{width:2.3rem;height:2.3rem;border-radius:50%;border:1px solid var(--line);background:none;display:flex;align-items:center;justify-content:center;color:var(--ink-soft);flex:none;transition:border-color var(--fade) ease,color var(--fade) ease,background-color var(--fade) ease;}
+  .icon-btn:hover{border-color:var(--gold);color:var(--gold-deep);}
+  .icon-btn svg{width:1.05rem;height:1.05rem;}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;padding:.85rem 1.6rem;border-radius:999px;font-weight:500;font-size:.86rem;letter-spacing:.08em;text-transform:uppercase;border:1px solid transparent;transition:background-color var(--fade) ease,color var(--fade) ease,border-color var(--fade) ease,box-shadow var(--fade) ease;white-space:nowrap;cursor:pointer;font-family:var(--font-body);}
+  .btn svg{width:1rem;height:1rem;flex:none;}
+  .btn-solid{background:var(--accent);color:var(--on-accent);box-shadow:0 14px 26px -14px rgba(182,64,42,.75);}
+  .btn-solid:hover{background:var(--accent-hover);box-shadow:0 18px 32px -14px rgba(182,64,42,.85);}
+  .btn-line{background:transparent;color:var(--ink);border-color:var(--line);}
+  .btn-line:hover{background:var(--panel);border-color:var(--gold);}
+  .btn-sm{padding:.6rem 1.15rem;font-size:.76rem;}
+  .hero .btn-line{color:#fff;border-color:rgba(255,255,255,.45);}
+  .hero .btn-line:hover{background:rgba(255,255,255,.12);border-color:#fff;}
+
+  .menu-toggle{display:none;width:2.6rem;height:2.6rem;border-radius:50%;border:1px solid var(--line);background:none;position:relative;flex:none;transition:border-color var(--fade) ease,background-color var(--fade) ease;}
+  .menu-toggle:hover{border-color:var(--gold);}
+  .menu-toggle i{position:absolute;left:50%;top:50%;width:18px;height:2px;margin-left:-9px;background:var(--ink);border-radius:2px;transition:transform .35s ease,opacity .25s ease,background-color var(--fade) ease;}
+  .menu-toggle i:nth-child(1){transform:translateY(-6px);}
+  .menu-toggle i:nth-child(3){transform:translateY(6px);}
+  .menu-toggle:hover i{background:var(--accent);}
+  .menu-toggle[aria-expanded="true"] i:nth-child(1){transform:rotate(45deg);}
+  .menu-toggle[aria-expanded="true"] i:nth-child(2){opacity:0;}
+  .menu-toggle[aria-expanded="true"] i:nth-child(3){transform:rotate(-45deg);}
+
+  /* mobile + tablet menu panel */
+  .mobile-nav{position:fixed;inset:0;z-index:190;background:var(--bg);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:.4rem;padding:5.5rem clamp(1.5rem,6vw,4rem) 2.5rem;overflow-y:auto;
+    visibility:hidden;pointer-events:none;clip-path:circle(0px at calc(100% - 2.6rem) 2.3rem);
+    transition:clip-path .75s cubic-bezier(.7,0,.2,1),visibility 0s linear .75s,background-color var(--fade-theme) ease;}
+  .mobile-nav.open{visibility:visible;pointer-events:auto;clip-path:circle(160% at calc(100% - 2.6rem) 2.3rem);
+    transition:clip-path .75s cubic-bezier(.7,0,.2,1),visibility 0s linear 0s,background-color var(--fade-theme) ease;}
+  .m-link{font-family:var(--font-head);font-weight:500;font-size:clamp(2.1rem,7vw,3rem);line-height:1.15;color:var(--ink);padding:.2rem 0;display:flex;align-items:baseline;gap:.9rem;opacity:0;transform:translateY(16px);transition:opacity .45s ease,transform .45s ease,color var(--fade) ease;}
+  .m-link small{font-family:var(--font-body);font-size:.8rem;color:var(--gold-deep);letter-spacing:.1em;}
+  .m-link:hover{color:var(--accent);}
+  .mobile-nav.open .m-link,.mobile-nav.open .m-extra{opacity:1;transform:none;transition-delay:calc(.3s + var(--i,0) * .07s);}
+  .mobile-nav.open .m-link:hover{transition-delay:0s;}
+  .m-extra{margin-top:1.4rem;display:flex;flex-wrap:wrap;gap:.9rem;align-items:center;opacity:0;transform:translateY(16px);transition:opacity .45s ease,transform .45s ease;}
+  .m-contact{margin-top:1.6rem;color:var(--ink-soft);font-size:.92rem;opacity:0;transform:translateY(16px);transition:opacity .45s ease,transform .45s ease;}
+  .mobile-nav.open .m-contact{opacity:1;transform:none;transition-delay:.85s;}
+  .m-contact a{color:var(--ink);font-weight:600;}
+  .m-contact a:hover{color:var(--accent);}
+
+  /* hero */
+  .hero{position:relative;overflow:hidden;min-height:clamp(620px,94vh,880px);display:flex;align-items:flex-end;padding:clamp(5rem,10vw,8rem) 0 clamp(3.5rem,7vw,5.5rem);background:#0E0C0B;}
+  .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;background:linear-gradient(160deg,#0E0C0B,#3A2414);}
+  .hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(14,10,8,.35) 0%,rgba(14,10,8,.5) 45%,rgba(14,10,8,.92) 100%),linear-gradient(90deg,rgba(14,10,8,.6) 0%,rgba(14,10,8,0) 70%);}
+  .hero .wrap{position:relative;z-index:2;width:100%;}
+  .hero-grid{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:end;}
+  .hero-copy .kicker{color:#E9B86C;}
+  .hero-copy h1{color:#fff;font-size:clamp(2.9rem,7.6vw,6.4rem);line-height:.98;margin:1.1rem 0 1.4rem;font-weight:400;max-width:12ch;}
+  .hero-copy h1 em{color:#F08A62;}
+  .hero-copy p.lede{font-size:clamp(1.02rem,1.5vw,1.2rem);color:rgba(255,255,255,.85);max-width:46ch;margin-bottom:2rem;font-weight:300;}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:1rem;}
+  .badge-ring{width:clamp(130px,14vw,170px);height:clamp(130px,14vw,170px);position:relative;flex:none;}
+  .badge-ring svg.ring{width:100%;height:100%;animation:spin 22s linear infinite;}
+  .badge-ring text{font-family:var(--font-body);font-size:11.4px;font-weight:500;letter-spacing:3.4px;fill:#fff;text-transform:uppercase;}
+  .badge-ring .core{position:absolute;inset:26%;border-radius:50%;background:#B6402A;display:flex;align-items:center;justify-content:center;color:#FFE2B8;}
+  .badge-ring .core svg{width:62%;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .hero-pause{position:absolute;right:clamp(1.25rem,4vw,3rem);top:1.6rem;z-index:3;width:2.6rem;height:2.6rem;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:rgba(14,10,8,.45);color:#fff;display:flex;align-items:center;justify-content:center;transition:border-color var(--fade) ease,background-color var(--fade) ease;}
+  .hero-pause:hover{border-color:#fff;background:rgba(14,10,8,.75);}
+  .hero-pause svg{width:1rem;height:1rem;}
+
+  /* marquee */
+  .marquee{background:var(--ink);color:var(--bg);overflow:hidden;white-space:nowrap;padding:1.05rem 0;transition:background-color var(--fade-theme) ease,color var(--fade-theme) ease;}
+  .marquee-track{display:inline-flex;animation:marquee 34s linear infinite;}
+  .marquee:hover .marquee-track{animation-play-state:paused;}
+  .marquee span{font-family:var(--font-head);font-style:italic;font-size:clamp(1.3rem,2.4vw,1.9rem);padding:0 1.4rem;display:inline-flex;align-items:center;gap:2.8rem;}
+  .marquee span::after{content:"✦";font-style:normal;font-size:.8em;color:var(--gold);}
+  @keyframes marquee{to{transform:translateX(-50%);}}
+
+  section{padding:clamp(3.8rem,8.5vw,7rem) 0;transition:background-color var(--fade-theme) ease;}
+  .section-head{max-width:60ch;margin-bottom:clamp(2.2rem,4vw,3.2rem);}
+  .section-head h2,.big-title{font-size:clamp(2.2rem,4.4vw,3.6rem);margin:.9rem 0 1rem;line-height:1.04;}
+  .section-head p{color:var(--ink-soft);font-size:1.06rem;font-weight:300;}
+  .panel{background:var(--panel);}
+
+  /* signature cheburek */
+  .sig-top{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:end;margin-bottom:clamp(2.2rem,4vw,3.2rem);}
+  .sig-top .section-head{margin-bottom:0;}
+  .motto{font-family:var(--font-head);font-size:clamp(1.8rem,3.4vw,2.8rem);line-height:1.1;color:var(--ink);text-align:right;}
+  .motto span{display:block;}
+  .motto span:nth-child(2){color:var(--gold-deep);font-style:italic;}
+  .motto span:nth-child(3){color:var(--accent);}
+  .dough-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+  .dough{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:1.6rem 1.6rem 1.7rem;position:relative;overflow:hidden;transition:border-color var(--fade) ease,background-color var(--fade-theme) ease;}
+  .dough:hover{border-color:var(--dc);}
+  .dough-art{height:150px;display:flex;align-items:center;justify-content:center;margin:-.2rem -.4rem 1rem;border-radius:16px;background:radial-gradient(70% 80% at 50% 70%,color-mix(in srgb, var(--dc) 22%, transparent),transparent 72%);transition:background-color var(--fade) ease;}
+  .dough-art svg{width:72%;color:var(--dc);filter:drop-shadow(0 14px 14px rgba(40,20,8,.22));transition:filter .4s ease;}
+  .dough:hover .dough-art svg{filter:drop-shadow(0 18px 20px rgba(40,20,8,.32));}
+  .dough-name{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.5rem;}
+  .dough h3{font-size:1.6rem;}
+  .dot{width:14px;height:14px;border-radius:50%;background:var(--dc);border:1px solid rgba(0,0,0,.15);flex:none;}
+  .dough p{color:var(--ink-soft);font-size:.95rem;}
+  .sauces{margin-top:1.4rem;display:grid;grid-template-columns:auto 1fr 1fr;gap:1.2rem;align-items:stretch;}
+  .sauces-label{display:flex;align-items:center;font-family:var(--font-head);font-style:italic;font-size:1.35rem;color:var(--ink);padding-right:1rem;}
+  .sauce{display:flex;align-items:center;gap:1rem;border:1px dashed var(--line);border-radius:18px;padding:1rem 1.2rem;transition:border-color var(--fade) ease;}
+  .sauce:hover{border-color:var(--gold);}
+  .sauce .s-dot{width:42px;height:42px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;}
+  .sauce h4{font-size:1.15rem;}
+  .sauce p{font-size:.86rem;color:var(--ink-soft);}
+
+  /* peremjac */
+  .pm{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2rem,6vw,5rem);align-items:center;}
+  .pm-art{position:relative;aspect-ratio:1/1;max-width:440px;width:100%;justify-self:center;}
+  .pm-art .plate{position:absolute;inset:0;border-radius:50%;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);transition:background-color var(--fade-theme) ease,border-color var(--fade-theme) ease;}
+  .pm-art .plate::after{content:"";position:absolute;inset:9%;border-radius:50%;border:1px solid var(--line);}
+  .pm-art svg{position:absolute;inset:16%;width:68%;height:68%;}
+  .pm-art .stamp{position:absolute;right:-4%;top:6%;background:var(--accent);color:var(--on-accent);border-radius:50%;width:30%;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;text-align:center;font-family:var(--font-head);font-style:italic;font-size:clamp(.9rem,1.6vw,1.15rem);line-height:1.15;padding:.6rem;transform:rotate(-8deg);transition:background-color var(--fade-theme) ease,color var(--fade-theme) ease;}
+  .fill-list{border-top:1px solid var(--line);margin-top:1.6rem;transition:border-color var(--fade-theme) ease;}
+  .fill{display:grid;grid-template-columns:2.6rem 1fr;gap:1rem;padding:1.1rem 0;border-bottom:1px solid var(--line);align-items:start;transition:border-color var(--fade-theme) ease;}
+  .fill b{font-family:var(--font-head);font-weight:500;font-size:1.15rem;color:var(--gold-deep);}
+  .fill h3{font-size:1.25rem;margin-bottom:.15rem;}
+  .fill p{font-size:.93rem;color:var(--ink-soft);}
+  .pm-foot{margin-top:1.4rem;display:flex;flex-wrap:wrap;gap:.5rem;}
+  .pill{font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:.35rem .8rem;border:1px solid var(--line);border-radius:999px;color:var(--ink-soft);}
+
+  /* menu index */
+  .menu-list{border-top:1px solid var(--ink);transition:border-color var(--fade-theme) ease;}
+  .menu-row{display:grid;grid-template-columns:4.5rem 1.1fr 1.4fr auto;gap:1.5rem;align-items:center;padding:1.5rem 1rem;border-bottom:1px solid var(--line);position:relative;transition:background-color var(--fade) ease,border-color var(--fade-theme) ease;}
+  .menu-row:hover{background:var(--card);}
+  .menu-row .num{font-family:var(--font-head);font-style:italic;font-size:1.1rem;color:var(--gold-deep);}
+  .menu-row h3{font-size:clamp(1.6rem,2.8vw,2.3rem);line-height:1.1;transition:color var(--fade) ease;}
+  .menu-row:hover h3{color:var(--accent);}
+  .menu-row p{color:var(--ink-soft);font-size:.95rem;}
+  .menu-row .tag{font-size:.7rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);border:1px solid var(--line);border-radius:999px;padding:.3rem .75rem;white-space:nowrap;transition:border-color var(--fade) ease,color var(--fade) ease;}
+  .menu-row:hover .tag{border-color:var(--accent);color:var(--accent);}
+  .menu-note{margin-top:1.6rem;font-size:.92rem;color:var(--ink-soft);display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;}
+
+  /* about / kitchens */
+  .about{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,5rem);align-items:start;}
+  .about-text{color:var(--ink-soft);font-size:1.06rem;font-weight:300;max-width:52ch;margin-bottom:1.1rem;}
+  .quote{margin-top:1.8rem;font-family:var(--font-head);font-style:italic;font-size:clamp(1.4rem,2.4vw,1.8rem);line-height:1.3;color:var(--ink);max-width:24ch;padding-left:1.2rem;border-left:2px solid var(--accent);}
+  .kitchens{display:grid;gap:1rem;}
+  .kitchen{display:grid;grid-template-columns:auto 1fr;gap:1.2rem;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:1.3rem 1.5rem;transition:border-color var(--fade) ease,background-color var(--fade-theme) ease;}
+  .kitchen:hover{border-color:var(--gold);}
+  .k-ic{width:3.2rem;height:3.2rem;border-radius:50%;border:1px solid var(--gold);color:var(--gold-deep);display:flex;align-items:center;justify-content:center;transition:background-color var(--fade) ease,color var(--fade) ease,border-color var(--fade) ease;}
+  .kitchen:hover .k-ic{background:var(--gold);color:var(--card);}
+  .k-ic svg{width:1.45rem;height:1.45rem;}
+  .kitchen h3{font-size:1.35rem;margin-bottom:.15rem;}
+  .kitchen p{font-size:.92rem;color:var(--ink-soft);}
+
+  /* visit */
+  .visit{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4.5rem);align-items:stretch;}
+  .visit-lede{color:var(--ink-soft);font-size:1.06rem;font-weight:300;max-width:46ch;margin-bottom:1.8rem;}
+  .info-list{border-top:1px solid var(--line);margin-bottom:1.6rem;transition:border-color var(--fade-theme) ease;}
+  .info-item{display:grid;grid-template-columns:8rem 1fr;gap:1rem;padding:1.1rem 0;border-bottom:1px solid var(--line);transition:border-color var(--fade-theme) ease;}
+  .info-item .label{font-size:.72rem;font-weight:500;color:var(--gold-deep);letter-spacing:.2em;text-transform:uppercase;padding-top:.3rem;}
+  .info-item .value a{font-weight:500;}
+  .info-item .value a:hover{color:var(--accent);}
+  .btn-row{display:flex;flex-wrap:wrap;gap:.8rem;}
+  .call-card{background:var(--dark-card);color:#F6F1E9;border-radius:26px;padding:clamp(1.9rem,4vw,3.2rem);display:flex;flex-direction:column;justify-content:center;gap:1rem;box-shadow:var(--shadow);position:relative;overflow:hidden;transition:background-color var(--fade-theme) ease;}
+  .call-card::before{content:"GOSHA";position:absolute;right:-.15em;bottom:-.28em;font-family:var(--font-body);font-weight:300;font-size:clamp(5rem,12vw,9rem);letter-spacing:.12em;color:rgba(246,241,233,.05);pointer-events:none;}
+  .call-card .kicker{color:#E9B86C;}
+  .call-card h3{color:#F6F1E9;font-size:clamp(1.8rem,3.2vw,2.5rem);line-height:1.1;}
+  .call-num{font-family:var(--font-head);font-size:clamp(2.2rem,5vw,3.4rem);line-height:1.05;color:#F6F1E9;transition:color var(--fade) ease;align-self:flex-start;}
+  .call-num:hover{color:#F08A62;}
+  .call-card p{color:rgba(246,241,233,.72);font-size:.98rem;font-weight:300;max-width:40ch;}
+  .call-card .btn-row{position:relative;z-index:1;margin-top:.4rem;}
+  .call-card .btn-line{color:#F6F1E9;border-color:rgba(246,241,233,.3);}
+  .call-card .btn-line:hover{background:rgba(246,241,233,.1);border-color:#F6F1E9;}
+
+  /* footer */
+  footer{background:var(--panel);color:var(--ink);border-top:1px solid var(--line);transition:background-color var(--fade-theme) ease,color var(--fade-theme) ease,border-color var(--fade-theme) ease;}
+  .footer-main{padding:3.2rem 0 2rem;}
+  .footer-grid{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:2rem;padding-bottom:2rem;border-bottom:1px solid var(--line);transition:border-color var(--fade-theme) ease;}
+  .footer-brand .brand-logo{height:46px;}
+  .footer-brand p{max-width:34ch;font-size:.92rem;color:var(--ink-soft);margin-top:1.1rem;}
+  .footer-links{display:flex;gap:3rem;flex-wrap:wrap;}
+  .footer-links h4{font-family:var(--font-body);font-size:.72rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;margin-bottom:.9rem;}
+  .footer-links a,.footer-links span{display:block;color:var(--ink-soft);font-size:.92rem;margin-bottom:.5rem;}
+  .footer-links a:hover{color:var(--accent);}
+  .footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding-top:1.5rem;font-size:.82rem;color:var(--ink-soft);align-items:center;}
+  .footer-lang{display:flex;gap:.5rem;}
+  .footer-lang button{background:none;border:1px solid var(--line);color:var(--ink);padding:.3rem .7rem;border-radius:999px;font-size:.72rem;font-weight:600;transition:background-color var(--fade) ease,border-color var(--fade) ease,color var(--fade) ease;}
+  .footer-lang button:hover{border-color:var(--gold);}
+  .footer-lang button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg);}
+
+  /* reveal on scroll */
+  .js .reveal{opacity:0;transform:translateY(16px);transition:opacity .8s ease,transform .8s ease,background-color var(--fade-theme) ease,border-color var(--fade-theme) ease,color var(--fade-theme) ease;}
+  .js .reveal.in{opacity:1;transform:none;}
+  @media (prefers-reduced-motion: reduce){ .js .reveal{opacity:1;transform:none;} .badge-ring svg.ring,.marquee-track{animation:none;} }
+
+  /* tablet */
+  @media (max-width:1023px){
+    nav.primary{display:none;}
+    .menu-toggle{display:block;}
+    .header-actions .btn{display:none;}
+    .sig-top,.pm,.about,.visit{grid-template-columns:1fr;}
+    .motto{text-align:left;}
+    .dough-grid{grid-template-columns:repeat(3,1fr);gap:.9rem;}
+    .dough{padding:1.2rem;}
+    .sauces{grid-template-columns:1fr 1fr;}
+    .sauces-label{grid-column:1 / -1;padding-right:0;}
+    .menu-row{grid-template-columns:3.2rem 1fr auto;}
+    .menu-row p{grid-column:2 / 4;grid-row:2;margin-top:-.8rem;}
+    .pm-art{max-width:380px;}
+  }
+  /* mobile */
+  @media (max-width:640px){
+    .lang-switch{display:none;}
+    .brand-logo{height:30px;}
+    .nav-row{gap:.75rem;}
+    .hero-grid{grid-template-columns:1fr;}
+    .badge-ring{position:absolute;right:0;top:-150px;width:110px;height:110px;}
+    .badge-ring text{font-size:11px;}
+    .dough-grid{grid-template-columns:1fr;}
+    .dough-art{height:130px;}
+    .sauces{grid-template-columns:1fr;}
+    .menu-row{grid-template-columns:2.4rem 1fr;gap:.4rem 1rem;padding:1.3rem .4rem;}
+    .menu-row .tag{display:none;}
+    .menu-row p{grid-column:2;margin-top:0;}
+    .info-item{grid-template-columns:1fr;gap:.2rem;}
+    .footer-grid{flex-direction:column;}
+    .pm-art .stamp{right:0;}
+  }
+  @media (max-width:360px){
+    .brand-logo{height:26px;}
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main" data-i18n="skip">Pāriet uz saturu</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <!-- cheburek: half moon with crimped edge, body uses currentColor -->
+    <g id="chebu">
+      <path d="M8 70 A52 52 0 0 1 112 70 Q60 80 8 70 Z" fill="currentColor"/>
+      <path d="M17 66 A43 43 0 0 1 103 66" fill="none" stroke="#000" stroke-opacity=".2" stroke-width="3" stroke-dasharray="1 6" stroke-linecap="round"/>
+      <path d="M30 40 Q48 26 70 28" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="5" stroke-linecap="round"/>
+      <g fill="#000" fill-opacity=".1"><circle cx="45" cy="52" r="3"/><circle cx="62" cy="44" r="2.2"/><circle cx="78" cy="55" r="2.6"/><circle cx="56" cy="60" r="1.8"/><circle cx="88" cy="46" r="1.6"/></g>
+    </g>
+    <g id="ic-phone"><path d="M7 3h3l1.500 4L9.500 8.500c.8 2.300 2.700 4.200 5 5l1.500-2L20 13v3a2 2 0 0 1-2.200 2C11.500 17.600 6.400 12.500 5.900 6.200A2 2 0 0 1 7 3Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></g>
+    <g id="ic-pin"><path d="M12 21s-7-7.200-7-12a7 7 0 1 1 14 0c0 4.800-7 12-7 12Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="9" r="2.400" fill="none" stroke="currentColor" stroke-width="1.5"/></g>
+    <g id="ic-ig"><rect x="3.500" y="3.500" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4.300" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="17.200" cy="6.800" r="1.100" fill="currentColor"/></g>
+    <g id="ic-arrow"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></g>
+    <g id="ic-khach"><path d="M3 12c0-3 4-5.500 9-5.500S21 9 21 12s-4 5.500-9 5.500S3 15 3 12Z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7.500 12c0-1.500 2-2.600 4.500-2.600s4.500 1.100 4.500 2.600-2 2.600-4.500 2.600S7.500 13.500 7.500 12Z" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="12" cy="12" r="1.400" fill="currentColor"/></g>
+    <g id="ic-leaf"><path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M5 19 13 11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></g>
+    <g id="ic-cake"><path d="M4.500 20h15v-7a1.500 1.500 0 0 0-1.500-1.500H6A1.500 1.500 0 0 0 4.500 13Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M4.500 15.500c1.500 1 3 1 4.500 0s3-1 4.500 0 3 1 4.500 0 1.500-.5 1.500-.5M12 11.500V8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12 4c1 1.200 1 2.200 0 3-1-.8-1-1.800 0-3Z" fill="currentColor"/></g>
+    <g id="ic-sun"><circle cx="12" cy="12" r="4.200" fill="none" stroke="currentColor" stroke-width="1.5"/><g stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="12" y1="2.500" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21.500"/><line x1="2.500" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="21.500" y2="12"/><line x1="5.100" y1="5.100" x2="6.800" y2="6.800"/><line x1="17.200" y1="17.200" x2="18.900" y2="18.900"/><line x1="5.100" y1="18.900" x2="6.800" y2="17.200"/><line x1="17.200" y1="6.800" x2="18.900" y2="5.100"/></g></g>
+    <g id="ic-moon"><path d="M20 14.200A8.200 8.200 0 1 1 9.800 4a6.600 6.600 0 0 0 10.200 10.200Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></g>
+    <g id="ic-pause"><rect x="6" y="4.500" width="4.500" height="15" rx="1" fill="currentColor"/><rect x="13.500" y="4.500" width="4.500" height="15" rx="1" fill="currentColor"/></g>
+    <g id="ic-play"><path d="M6 4.500v15l14-7.500z" fill="currentColor"/></g>
+  </defs>
+</svg>
+
+<a id="home"></a>
+<header>
+  <div class="wrap nav-row">
+    <a class="brand" href="#home" aria-label="GOSHA by TECTO BAKERY">
+      <img src="logo.svg" alt="GOSHA by TECTO BAKERY" class="brand-logo" width="133" height="36">
+    </a>
+    <nav class="primary" aria-label="Primary">
+      <a href="#cheburek" data-i18n="nav.cheb">Čebureki</a>
+      <a href="#menu" data-i18n="nav.menu">Ēdienkarte</a>
+      <a href="#about" data-i18n="nav.about">Par mums</a>
+      <a href="#visit" data-i18n="nav.visit">Kontakti</a>
+    </nav>
+    <div class="header-actions">
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button data-lang="lv" aria-pressed="true">LV</button>
+        <button data-lang="ru" aria-pressed="false">RU</button>
+        <button data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <button class="icon-btn" id="themeToggle" aria-label="Dark mode" aria-pressed="false">
+        <svg viewBox="0 0 24 24" id="themeIcon"><use href="#ic-moon"/></svg>
+      </button>
+      <a class="btn btn-solid btn-sm" href="tel:+37123882228"><svg viewBox="0 0 24 24"><use href="#ic-phone"/></svg><span data-i18n="cta_call">Zvanīt</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav"><i></i><i></i><i></i></button>
+    </div>
+  </div>
+</header>
+
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile" aria-hidden="true">
+  <a class="m-link" style="--i:0" href="#cheburek"><small>01</small><span data-i18n="nav.cheb">Čebureki</span></a>
+  <a class="m-link" style="--i:1" href="#menu"><small>02</small><span data-i18n="nav.menu">Ēdienkarte</span></a>
+  <a class="m-link" style="--i:2" href="#about"><small>03</small><span data-i18n="nav.about">Par mums</span></a>
+  <a class="m-link" style="--i:3" href="#visit"><small>04</small><span data-i18n="nav.visit">Kontakti</span></a>
+  <div class="m-extra" style="--i:4">
+    <div class="lang-switch" role="group" aria-label="Language" style="display:flex;">
+      <button data-lang="lv" aria-pressed="true">LV</button>
+      <button data-lang="ru" aria-pressed="false">RU</button>
+      <button data-lang="en" aria-pressed="false">EN</button>
+    </div>
+    <a class="btn btn-solid btn-sm" href="tel:+37123882228"><svg viewBox="0 0 24 24"><use href="#ic-phone"/></svg><span data-i18n="cta_call">Zvanīt</span></a>
+  </div>
+  <p class="m-contact"><a href="tel:+37123882228">+371 23 882 228</a> &nbsp;|&nbsp; Mihoelsa iela 68, Daugavpils</p>
+</nav>
+
+<main id="main">
+
+  <section class="hero">
+    <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="auto" poster="https://assets.mixkit.co/videos/42467/42467-thumb-720-0.jpg">
+      <source src="https://assets.mixkit.co/videos/42467/42467-720.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="kicker" data-i18n="hero_kicker">Mihoelsa iela 68, Daugavpils</span>
+        <h1><span data-i18n="hero_t1">Lielākie čebureki</span> <em data-i18n="hero_t2">Latvijā</em></h1>
+        <p class="lede" data-i18n="hero_lede">Autora ēdieni, gruzīnu, itāļu un Eiropas virtuve. Roku darbs pēc tradicionālām receptēm.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-solid" href="tel:+37123882228"><svg viewBox="0 0 24 24"><use href="#ic-phone"/></svg><span>+371 23 882 228</span></a>
+          <a class="btn btn-line" href="#menu"><span data-i18n="cta_menu">Ēdienkarte</span><svg viewBox="0 0 24 24"><use href="#ic-arrow"/></svg></a>
+        </div>
+      </div>
+      <div class="badge-ring" aria-hidden="true">
+        <svg class="ring" viewBox="0 0 160 160">
+          <defs><path id="ringPath" d="M80 80 m-64 0 a64 64 0 1 1 128 0 a64 64 0 1 1 -128 0"/></defs>
+          <text><textPath href="#ringPath" id="ringText">Liels · Sulīgs · Īsts · Liels · Sulīgs · Īsts ·</textPath></text>
+        </svg>
+        <div class="core"><svg viewBox="0 0 120 84"><use href="#chebu"/></svg></div>
+      </div>
+    </div>
+    <button class="hero-pause" id="heroPause" aria-label="Pause background video" aria-pressed="false">
+      <svg viewBox="0 0 24 24" id="heroPauseIcon"><use href="#ic-pause"/></svg>
+    </button>
+  </section>
+
+  <div class="marquee" aria-hidden="true"><div class="marquee-track" id="marquee"></div></div>
+
+  <section id="cheburek">
+    <div class="wrap">
+      <div class="sig-top">
+        <div class="section-head reveal">
+          <span class="kicker" data-i18n="sig_kicker">Mūsu lepnums</span>
+          <h2><span data-i18n="sig_t1">Čebureks, kas</span> <em data-i18n="sig_t2">neietilpst šķīvī</em></h2>
+          <p data-i18n="sig_sub">Lielākais Latvijā. Trīs veidu mīkla, trīs pildījumi, katrs pagatavots ar rokām.</p>
+        </div>
+        <p class="motto reveal"><span data-i18n="m1">Liels.</span><span data-i18n="m2">Sulīgs.</span><span data-i18n="m3">Īsts.</span></p>
+      </div>
+      <div class="dough-grid">
+        <article class="dough reveal" style="--dc:#C2412D">
+          <div class="dough-art"><svg viewBox="0 0 120 84" aria-hidden="true"><use href="#chebu"/></svg></div>
+          <div class="dough-name"><h3 data-i18n="d1_t">Sarkanais</h3><span class="dot"></span></div>
+          <p data-i18n="d1_d">Sulīga liellopa gaļa ar tomātiem.</p>
+        </article>
+        <article class="dough reveal" style="--dc:#E2A33A">
+          <div class="dough-art"><svg viewBox="0 0 120 84" aria-hidden="true"><use href="#chebu"/></svg></div>
+          <div class="dough-name"><h3 data-i18n="d2_t">Dzeltenais</h3><span class="dot"></span></div>
+          <p data-i18n="d2_d">Cūkgaļas un liellopa gaļas pildījums ar aromātiskiem garšaugiem.</p>
+        </article>
+        <article class="dough reveal" style="--dc:#E9DFCD">
+          <div class="dough-art"><svg viewBox="0 0 120 84" aria-hidden="true"><use href="#chebu"/></svg></div>
+          <div class="dough-name"><h3 data-i18n="d3_t">Baltais</h3><span class="dot"></span></div>
+          <p data-i18n="d3_d">Maigā cāļa gaļa ar mocarellu.</p>
+        </article>
+      </div>
+      <div class="sauces reveal">
+        <div class="sauces-label" data-i18n="sauce_label">Ideāli kopā ar mūsu mērcēm</div>
+        <div class="sauce"><span class="s-dot" style="background:#C2412D"></span><div><h4 data-i18n="s1_t">Adžika</h4><p data-i18n="s1_d">Saldi tomāti, koriandrs, ķiploki.</p></div></div>
+        <div class="sauce"><span class="s-dot" style="background:#F1ECE2;border:1px solid var(--line)"></span><div><h4 data-i18n="s2_t">Maconi</h4><p data-i18n="s2_d">Gruzīnu raudzētā piena mērce ar zaļumiem un ķiplokiem.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="wrap pm">
+      <div class="pm-art reveal" aria-hidden="true">
+        <div class="plate"></div>
+        <svg viewBox="0 0 200 200">
+          <g transform="translate(100 100)">
+            <g fill="#D9984A">
+              <path d="M0 -78 C30 -78 56 -62 66 -38 C30 -34 12 -18 0 0 C-12 -18 -30 -34 -66 -38 C-56 -62 -30 -78 0 -78Z" opacity=".95"/>
+              <circle r="74" fill="#C98B3B"/>
+            </g>
+            <circle r="74" fill="none" stroke="#9A6512" stroke-width="3" stroke-dasharray="2 7" stroke-linecap="round"/>
+            <circle r="56" fill="#E0A957"/>
+            <circle r="24" fill="#7A3A1C"/>
+            <circle r="24" fill="none" stroke="#5C2A12" stroke-width="2"/>
+            <path d="M-6 -8 Q2 -14 10 -6" stroke="#fff" stroke-opacity=".35" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <g fill="#000" fill-opacity=".08"><circle cx="-38" cy="-20" r="4"/><circle cx="34" cy="28" r="3"/><circle cx="20" cy="-40" r="2.5"/><circle cx="-30" cy="32" r="3"/></g>
+          </g>
+        </svg>
+        <span class="stamp" data-i18n="pm_stamp">Izvēlies savu pildījumu</span>
+      </div>
+      <div class="reveal">
+        <span class="kicker" data-i18n="pm_kicker">Peremjači</span>
+        <h2 class="big-title"><span data-i18n="pm_t1">Peremjači pēc</span> <em data-i18n="pm_t2">mājas receptes</em></h2>
+        <p class="about-text" data-i18n="pm_p">Atvērtie pīrādziņi ar sulīgu pildījumu, cepti zeltaini kraukšķīgi. Izvēlies savu pildījumu.</p>
+        <div class="fill-list">
+          <div class="fill"><b>01</b><div><h3 data-i18n="f1_t">Liellopa gaļa</h3><p data-i18n="f1_d">Sulīga liellopa gaļa ar aromātiskiem garšaugiem.</p></div></div>
+          <div class="fill"><b>02</b><div><h3 data-i18n="f2_t">Cūkgaļa un liellopa gaļa</h3><p data-i18n="f2_d">Sulīgs cūkgaļas un liellopa gaļas pildījums.</p></div></div>
+          <div class="fill"><b>03</b><div><h3 data-i18n="f3_t">Vistas gaļa ar mocarellu</h3><p data-i18n="f3_d">Maiga vistas gaļa ar kūstošu mocarellu.</p></div></div>
+        </div>
+        <div class="pm-foot"><span class="pill" data-i18n="pill1">Roku darbs</span><span class="pill" data-i18n="pill2">Tradicionālā recepte</span><span class="pill" data-i18n="pill3">Aromātiski garšaugi</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="menu">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="kicker" data-i18n="menu_kicker">Ēdienkarte</span>
+        <h2><span data-i18n="menu_t1">No sāļā līdz</span> <em data-i18n="menu_t2">saldajam</em></h2>
+        <p data-i18n="menu_sub">Gruzīnu klasika, autora ēdieni un deserti no TECTO Bakery konditorejas.</p>
+      </div>
+      <div class="menu-list reveal">
+        <div class="menu-row"><span class="num">01</span><h3 data-i18n="r1_t">Čebureki</h3><p data-i18n="r1_d">Lielākie Latvijā. Sarkanā, dzeltenā un baltā mīkla ar sulīgiem pildījumiem.</p><span class="tag" data-i18n="tag_sig">Firmas</span></div>
+        <div class="menu-row"><span class="num">02</span><h3 data-i18n="r2_t">Peremjači</h3><p data-i18n="r2_d">Liellopa gaļa, cūkgaļa ar liellopa gaļu vai vista ar mocarellu.</p><span class="tag" data-i18n="tag_home">Mājas</span></div>
+        <div class="menu-row"><span class="num">03</span><h3 data-i18n="r3_t">Hačapuri</h3><p data-i18n="r3_d">Gruzīnu klasika ar kūstošu sieru un olu.</p><span class="tag" data-i18n="tag_geo">Gruzīnu</span></div>
+        <div class="menu-row"><span class="num">04</span><h3 data-i18n="r4_t">Šu</h3><p data-i18n="r4_d">Gaisīgas šu kūciņas ar maigu krēmu.</p><span class="tag" data-i18n="tag_dess">Deserti</span></div>
+        <div class="menu-row"><span class="num">05</span><h3 data-i18n="r5_t">Tartes</h3><p data-i18n="r5_d">Smalkas tartes ar dažādiem pildījumiem.</p><span class="tag" data-i18n="tag_dess">Deserti</span></div>
+        <div class="menu-row"><span class="num">06</span><h3 data-i18n="r6_t">Musa kūkas</h3><p data-i18n="r6_d">Vieglas, krāšņas musa kūkas kafijai vai svētkiem.</p><span class="tag" data-i18n="tag_dess">Deserti</span></div>
+        <div class="menu-row"><span class="num">07</span><h3 data-i18n="r7_t">Kafija</h3><p data-i18n="r7_d">Svaigi pagatavota kafija pie deserta vai čebureka.</p><span class="tag" data-i18n="tag_drink">Dzērieni</span></div>
+      </div>
+      <div class="menu-note"><span data-i18n="menu_note">Pilnu ēdienkarti un aktuālās cenas skatiet uz vietas vai mūsu Instagram.</span><a class="btn btn-line btn-sm" href="https://www.instagram.com/gosha_bytectobakery.lv/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#ic-ig"/></svg><span>Instagram</span></a></div>
+    </div>
+  </section>
+
+  <section id="about" class="panel">
+    <div class="wrap about">
+      <div class="reveal">
+        <span class="kicker" data-i18n="about_kicker">Par mums</span>
+        <h2 class="big-title"><span data-i18n="about_t1">GOSHA by</span> <em>TECTO Bakery</em></h2>
+        <p class="about-text" data-i18n="about_p1">GOSHA ir restorāns Daugavpilī no TECTO Bakery komandas. Šeit satiekas gruzīnu viesmīlība, itāļu vienkāršība un Eiropas konditorejas smalkums.</p>
+        <p class="about-text" data-i18n="about_p2">Mēs gatavojam ar rokām un pēc tradicionālām receptēm, lai katrs kumoss būtu tāds, pēc kura gribas atgriezties.</p>
+        <p class="quote" data-i18n="about_quote">Liels. Sulīgs. Īsts. Tā mēs gatavojam visu.</p>
+      </div>
+      <div class="kitchens reveal">
+        <div class="kitchen"><span class="k-ic"><svg viewBox="0 0 24 24"><use href="#ic-khach"/></svg></span><div><h3 data-i18n="k1_t">Gruzīnu virtuve</h3><p data-i18n="k1_d">Čebureki, hačapuri, adžika un maconi.</p></div></div>
+        <div class="kitchen"><span class="k-ic"><svg viewBox="0 0 24 24"><use href="#ic-leaf"/></svg></span><div><h3 data-i18n="k2_t">Itāļu virtuve</h3><p data-i18n="k2_d">Vienkāršas, godīgas garšas un svaigi produkti.</p></div></div>
+        <div class="kitchen"><span class="k-ic"><svg viewBox="0 0 24 24"><use href="#ic-cake"/></svg></span><div><h3 data-i18n="k3_t">Eiropas deserti</h3><p data-i18n="k3_d">Šu, tartes un musa kūkas no TECTO Bakery.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="visit">
+    <div class="wrap visit">
+      <div class="reveal">
+        <span class="kicker" data-i18n="visit_kicker">Kontakti</span>
+        <h2 class="big-title"><span data-i18n="visit_t1">Atnāciet pie</span> <em data-i18n="visit_t2">mums</em></h2>
+        <p class="visit-lede" data-i18n="visit_lede">Daugavpils centrā, Mihoelsa ielā. Iegriezieties uz čebureku un kafiju vai zvaniet, lai pasūtītu.</p>
+        <div class="info-list">
+          <div class="info-item"><span class="label" data-i18n="lbl_address">Adrese</span><span class="value">Mihoelsa iela 68, Daugavpils</span></div>
+          <div class="info-item"><span class="label" data-i18n="lbl_phone">Tālrunis</span><span class="value"><a href="tel:+37123882228">+371 23 882 228</a></span></div>
+          <div class="info-item"><span class="label">Instagram</span><span class="value"><a href="https://www.instagram.com/gosha_bytectobakery.lv/" target="_blank" rel="noopener">@gosha_bytectobakery.lv</a></span></div>
+        </div>
+        <div class="btn-row">
+          <a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&query=Mihoelsa+iela+68+Daugavpils" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#ic-pin"/></svg><span data-i18n="map_btn">Atvērt kartē</span></a>
+          <a class="btn btn-line" href="https://www.instagram.com/gosha_bytectobakery.lv/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#ic-ig"/></svg><span>Instagram</span></a>
+        </div>
+      </div>
+      <div class="call-card reveal">
+        <span class="kicker" data-i18n="call_kicker">Pasūtījumi</span>
+        <h3 data-i18n="call_title">Zvaniet un pasūtiet</h3>
+        <a class="call-num" href="tel:+37123882228">23 882 228</a>
+        <p data-i18n="call_text">Jautājumi, pasūtījumi un galdiņu rezervācija pa tālruni.</p>
+        <div class="btn-row">
+          <a class="btn btn-solid" href="tel:+37123882228"><svg viewBox="0 0 24 24"><use href="#ic-phone"/></svg><span data-i18n="cta_call">Zvanīt</span></a>
+          <a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&query=Mihoelsa+iela+68+Daugavpils" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#ic-pin"/></svg><span data-i18n="route_btn">Maršruts</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-main">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="#home" aria-label="GOSHA by TECTO BAKERY">
+          <img src="logo.svg" alt="GOSHA by TECTO BAKERY" class="brand-logo" width="170" height="46">
+        </a>
+        <p data-i18n="footer_tag">Lielākie čebureki Latvijā. Gruzīnu, itāļu un Eiropas virtuve Daugavpilī.</p>
+      </div>
+      <div class="footer-links">
+        <div>
+          <h4 data-i18n="nav.menu">Ēdienkarte</h4>
+          <a href="#cheburek" data-i18n="nav.cheb">Čebureki</a>
+          <a href="#menu" data-i18n="r3_t">Hačapuri</a>
+          <a href="#menu" data-i18n="tag_dess">Deserti</a>
+        </div>
+        <div>
+          <h4 data-i18n="nav.visit">Kontakti</h4>
+          <a href="tel:+37123882228">+371 23 882 228</a>
+          <a href="https://www.instagram.com/gosha_bytectobakery.lv/" target="_blank" rel="noopener">Instagram</a>
+          <span>Mihoelsa iela 68, Daugavpils</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="yr">2026</span> GOSHA by TECTO BAKERY. <span data-i18n="footer_rights">Visas tiesības aizsargātas.</span></span>
+      <div class="footer-lang" role="group" aria-label="Language">
+        <button data-lang="lv" aria-pressed="true">LV</button>
+        <button data-lang="ru" aria-pressed="false">RU</button>
+        <button data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var T = {
+    lv: {
+      skip:"Pāriet uz saturu",
+      "nav.cheb":"Čebureki","nav.menu":"Ēdienkarte","nav.about":"Par mums","nav.visit":"Kontakti",
+      cta_call:"Zvanīt", cta_menu:"Ēdienkarte",
+      theme_dark:"Tumšais režīms", theme_light:"Gaišais režīms", menu_open:"Atvērt izvēlni", menu_close:"Aizvērt izvēlni",
+      video_pause:"Apturēt fona video", video_play:"Atskaņot fona video",
+      hero_kicker:"Mihoelsa iela 68, Daugavpils", hero_t1:"Lielākie čebureki", hero_t2:"Latvijā",
+      hero_lede:"Autora ēdieni, gruzīnu, itāļu un Eiropas virtuve. Roku darbs pēc tradicionālām receptēm.",
+      ring:"Liels · Sulīgs · Īsts · Liels · Sulīgs · Īsts ·",
+      marquee:["Čebureki","Peremjači","Hačapuri","Šu","Tartes","Musa kūkas","Kafija"],
+      sig_kicker:"Mūsu lepnums", sig_t1:"Čebureks, kas", sig_t2:"neietilpst šķīvī",
+      sig_sub:"Lielākais Latvijā. Trīs veidu mīkla, trīs pildījumi, katrs pagatavots ar rokām.",
+      m1:"Liels.", m2:"Sulīgs.", m3:"Īsts.",
+      d1_t:"Sarkanais", d1_d:"Sulīga liellopa gaļa ar tomātiem.",
+      d2_t:"Dzeltenais", d2_d:"Cūkgaļas un liellopa gaļas pildījums ar aromātiskiem garšaugiem.",
+      d3_t:"Baltais", d3_d:"Maigā cāļa gaļa ar mocarellu.",
+      sauce_label:"Ideāli kopā ar mūsu mērcēm",
+      s1_t:"Adžika", s1_d:"Saldi tomāti, koriandrs, ķiploki.",
+      s2_t:"Maconi", s2_d:"Gruzīnu raudzētā piena mērce ar zaļumiem un ķiplokiem.",
+      pm_stamp:"Izvēlies savu pildījumu", pm_kicker:"Peremjači", pm_t1:"Peremjači pēc", pm_t2:"mājas receptes",
+      pm_p:"Atvērtie pīrādziņi ar sulīgu pildījumu, cepti zeltaini kraukšķīgi. Izvēlies savu pildījumu.",
+      f1_t:"Liellopa gaļa", f1_d:"Sulīga liellopa gaļa ar aromātiskiem garšaugiem.",
+      f2_t:"Cūkgaļa un liellopa gaļa", f2_d:"Sulīgs cūkgaļas un liellopa gaļas pildījums.",
+      f3_t:"Vistas gaļa ar mocarellu", f3_d:"Maiga vistas gaļa ar kūstošu mocarellu.",
+      pill1:"Roku darbs", pill2:"Tradicionālā recepte", pill3:"Aromātiski garšaugi",
+      menu_kicker:"Ēdienkarte", menu_t1:"No sāļā līdz", menu_t2:"saldajam",
+      menu_sub:"Gruzīnu klasika, autora ēdieni un deserti no TECTO Bakery konditorejas.",
+      r1_t:"Čebureki", r1_d:"Lielākie Latvijā. Sarkanā, dzeltenā un baltā mīkla ar sulīgiem pildījumiem.",
+      r2_t:"Peremjači", r2_d:"Liellopa gaļa, cūkgaļa ar liellopa gaļu vai vista ar mocarellu.",
+      r3_t:"Hačapuri", r3_d:"Gruzīnu klasika ar kūstošu sieru un olu.",
+      r4_t:"Šu", r4_d:"Gaisīgas šu kūciņas ar maigu krēmu.",
+      r5_t:"Tartes", r5_d:"Smalkas tartes ar dažādiem pildījumiem.",
+      r6_t:"Musa kūkas", r6_d:"Vieglas, krāšņas musa kūkas kafijai vai svētkiem.",
+      r7_t:"Kafija", r7_d:"Svaigi pagatavota kafija pie deserta vai čebureka.",
+      tag_sig:"Firmas", tag_home:"Mājas", tag_geo:"Gruzīnu", tag_dess:"Deserti", tag_drink:"Dzērieni",
+      menu_note:"Pilnu ēdienkarti un aktuālās cenas skatiet uz vietas vai mūsu Instagram.",
+      about_kicker:"Par mums", about_t1:"GOSHA by",
+      about_p1:"GOSHA ir restorāns Daugavpilī no TECTO Bakery komandas. Šeit satiekas gruzīnu viesmīlība, itāļu vienkāršība un Eiropas konditorejas smalkums.",
+      about_p2:"Mēs gatavojam ar rokām un pēc tradicionālām receptēm, lai katrs kumoss būtu tāds, pēc kura gribas atgriezties.",
+      about_quote:"Liels. Sulīgs. Īsts. Tā mēs gatavojam visu.",
+      k1_t:"Gruzīnu virtuve", k1_d:"Čebureki, hačapuri, adžika un maconi.",
+      k2_t:"Itāļu virtuve", k2_d:"Vienkāršas, godīgas garšas un svaigi produkti.",
+      k3_t:"Eiropas deserti", k3_d:"Šu, tartes un musa kūkas no TECTO Bakery.",
+      visit_kicker:"Kontakti", visit_t1:"Atnāciet pie", visit_t2:"mums",
+      visit_lede:"Daugavpils centrā, Mihoelsa ielā. Iegriezieties uz čebureku un kafiju vai zvaniet, lai pasūtītu.",
+      lbl_address:"Adrese", lbl_phone:"Tālrunis", map_btn:"Atvērt kartē", route_btn:"Maršruts",
+      call_kicker:"Pasūtījumi", call_title:"Zvaniet un pasūtiet", call_text:"Jautājumi, pasūtījumi un galdiņu rezervācija pa tālruni.",
+      footer_tag:"Lielākie čebureki Latvijā. Gruzīnu, itāļu un Eiropas virtuve Daugavpilī.", footer_rights:"Visas tiesības aizsargātas.",
+      page_title:"GOSHA by TECTO BAKERY - lielākie čebureki Latvijā, Daugavpils"
+    },
+    ru: {
+      skip:"К содержанию",
+      "nav.cheb":"Чебуреки","nav.menu":"Меню","nav.about":"О нас","nav.visit":"Контакты",
+      cta_call:"Позвонить", cta_menu:"Меню",
+      theme_dark:"Тёмная тема", theme_light:"Светлая тема", menu_open:"Открыть меню", menu_close:"Закрыть меню",
+      video_pause:"Остановить фоновое видео", video_play:"Воспроизвести фоновое видео",
+      hero_kicker:"Ул. Михоэлса 68, Даугавпилс", hero_t1:"Самые большие чебуреки", hero_t2:"в Латвии",
+      hero_lede:"Авторские блюда, грузинская, итальянская и европейская кухня. Ручная работа по традиционным рецептам.",
+      ring:"Большой · Сочный · Настоящий · Большой · Сочный ·",
+      marquee:["Чебуреки","Перемячи","Хачапури","Шу","Тарты","Муссовые торты","Кофе"],
+      sig_kicker:"Наша гордость", sig_t1:"Чебурек, который", sig_t2:"не помещается на тарелку",
+      sig_sub:"Самый большой в Латвии. Три вида теста, три начинки, каждый сделан вручную.",
+      m1:"Большой.", m2:"Сочный.", m3:"Настоящий.",
+      d1_t:"Красный", d1_d:"Сочная говядина с томатами.",
+      d2_t:"Жёлтый", d2_d:"Начинка из свинины и говядины с ароматными травами.",
+      d3_t:"Белый", d3_d:"Нежная курица с моцареллой.",
+      sauce_label:"Идеально с нашими соусами",
+      s1_t:"Аджика", s1_d:"Сладкие томаты, кинза, чеснок.",
+      s2_t:"Мацони", s2_d:"Грузинский кисломолочный соус с зеленью и чесноком.",
+      pm_stamp:"Выбери свою начинку", pm_kicker:"Перемячи", pm_t1:"Перемячи по", pm_t2:"домашнему рецепту",
+      pm_p:"Открытые пирожки с сочной начинкой, обжаренные до золотистой корочки. Выбери свою начинку.",
+      f1_t:"Говядина", f1_d:"Сочная говядина с ароматными травами.",
+      f2_t:"Свинина и говядина", f2_d:"Сочная начинка из свинины и говядины.",
+      f3_t:"Курица с моцареллой", f3_d:"Нежная курица с тянущейся моцареллой.",
+      pill1:"Ручная работа", pill2:"Традиционный рецепт", pill3:"Ароматные травы",
+      menu_kicker:"Меню", menu_t1:"От солёного до", menu_t2:"сладкого",
+      menu_sub:"Грузинская классика, авторские блюда и десерты от кондитерской TECTO Bakery.",
+      r1_t:"Чебуреки", r1_d:"Самые большие в Латвии. Красное, жёлтое и белое тесто с сочной начинкой.",
+      r2_t:"Перемячи", r2_d:"Говядина, свинина с говядиной или курица с моцареллой.",
+      r3_t:"Хачапури", r3_d:"Грузинская классика с тянущимся сыром и яйцом.",
+      r4_t:"Шу", r4_d:"Воздушные пирожные шу с нежным кремом.",
+      r5_t:"Тарты", r5_d:"Изящные тарты с разными начинками.",
+      r6_t:"Муссовые торты", r6_d:"Лёгкие и красивые муссовые торты к кофе или к празднику.",
+      r7_t:"Кофе", r7_d:"Свежесваренный кофе к десерту или чебуреку.",
+      tag_sig:"Фирменное", tag_home:"Домашнее", tag_geo:"Грузинское", tag_dess:"Десерты", tag_drink:"Напитки",
+      menu_note:"Полное меню и актуальные цены смотрите на месте или в нашем Instagram.",
+      about_kicker:"О нас", about_t1:"GOSHA by",
+      about_p1:"GOSHA - ресторан в Даугавпилсе от команды TECTO Bakery. Здесь встречаются грузинское гостеприимство, итальянская простота и европейская кондитерская утончённость.",
+      about_p2:"Мы готовим вручную и по традиционным рецептам, чтобы к каждому кусочку хотелось возвращаться.",
+      about_quote:"Большой. Сочный. Настоящий. Так мы готовим всё.",
+      k1_t:"Грузинская кухня", k1_d:"Чебуреки, хачапури, аджика и мацони.",
+      k2_t:"Итальянская кухня", k2_d:"Простые, честные вкусы и свежие продукты.",
+      k3_t:"Европейские десерты", k3_d:"Шу, тарты и муссовые торты от TECTO Bakery.",
+      visit_kicker:"Контакты", visit_t1:"Приходите", visit_t2:"к нам",
+      visit_lede:"В центре Даугавпилса, на улице Михоэлса. Заходите на чебурек и кофе или звоните, чтобы заказать.",
+      lbl_address:"Адрес", lbl_phone:"Телефон", map_btn:"Открыть на карте", route_btn:"Маршрут",
+      call_kicker:"Заказы", call_title:"Звоните и заказывайте", call_text:"Вопросы, заказы и бронирование столиков по телефону.",
+      footer_tag:"Самые большие чебуреки в Латвии. Грузинская, итальянская и европейская кухня в Даугавпилсе.", footer_rights:"Все права защищены.",
+      page_title:"GOSHA by TECTO BAKERY - самые большие чебуреки в Латвии, Даугавпилс"
+    },
+    en: {
+      skip:"Skip to content",
+      "nav.cheb":"Chebureki","nav.menu":"Menu","nav.about":"About","nav.visit":"Contact",
+      cta_call:"Call", cta_menu:"See the menu",
+      theme_dark:"Dark mode", theme_light:"Light mode", menu_open:"Open menu", menu_close:"Close menu",
+      video_pause:"Pause background video", video_play:"Play background video",
+      hero_kicker:"Mihoelsa iela 68, Daugavpils", hero_t1:"The biggest chebureki", hero_t2:"in Latvia",
+      hero_lede:"Signature dishes, Georgian, Italian and European cuisine. Handmade to traditional recipes.",
+      ring:"Big · Juicy · Real · Big · Juicy · Real · Big · Juicy ·",
+      marquee:["Chebureki","Peremyach","Khachapuri","Choux","Tarts","Mousse cakes","Coffee"],
+      sig_kicker:"Our pride", sig_t1:"A cheburek that", sig_t2:"won't fit on the plate",
+      sig_sub:"The biggest in Latvia. Three kinds of dough, three fillings, each one made by hand.",
+      m1:"Big.", m2:"Juicy.", m3:"Real.",
+      d1_t:"Red", d1_d:"Juicy beef with tomatoes.",
+      d2_t:"Yellow", d2_d:"Pork and beef filling with fragrant herbs.",
+      d3_t:"White", d3_d:"Tender chicken with mozzarella.",
+      sauce_label:"Best with our sauces",
+      s1_t:"Adjika", s1_d:"Sweet tomatoes, coriander, garlic.",
+      s2_t:"Matsoni", s2_d:"Georgian fermented milk sauce with herbs and garlic.",
+      pm_stamp:"Pick your filling", pm_kicker:"Peremyach", pm_t1:"Peremyach from a", pm_t2:"family recipe",
+      pm_p:"Open-top pies with a juicy filling, fried golden and crisp. Pick your filling.",
+      f1_t:"Beef", f1_d:"Juicy beef with fragrant herbs.",
+      f2_t:"Pork and beef", f2_d:"A juicy pork and beef filling.",
+      f3_t:"Chicken with mozzarella", f3_d:"Tender chicken with melting mozzarella.",
+      pill1:"Handmade", pill2:"Traditional recipe", pill3:"Fragrant herbs",
+      menu_kicker:"Menu", menu_t1:"From savoury to", menu_t2:"sweet",
+      menu_sub:"Georgian classics, signature dishes and desserts from the TECTO Bakery patisserie.",
+      r1_t:"Chebureki", r1_d:"The biggest in Latvia. Red, yellow and white dough with juicy fillings.",
+      r2_t:"Peremyach", r2_d:"Beef, pork with beef, or chicken with mozzarella.",
+      r3_t:"Khachapuri", r3_d:"The Georgian classic with melting cheese and egg.",
+      r4_t:"Choux", r4_d:"Airy choux pastries with a soft cream.",
+      r5_t:"Tarts", r5_d:"Delicate tarts with different fillings.",
+      r6_t:"Mousse cakes", r6_d:"Light, beautiful mousse cakes for coffee or a celebration.",
+      r7_t:"Coffee", r7_d:"Freshly made coffee with a dessert or a cheburek.",
+      tag_sig:"Signature", tag_home:"Homemade", tag_geo:"Georgian", tag_dess:"Desserts", tag_drink:"Drinks",
+      menu_note:"See the full menu and current prices in the restaurant or on our Instagram.",
+      about_kicker:"About us", about_t1:"GOSHA by",
+      about_p1:"GOSHA is a restaurant in Daugavpils from the TECTO Bakery team. Georgian hospitality, Italian simplicity and European pastry craft all meet here.",
+      about_p2:"We cook by hand and to traditional recipes, so every bite makes you want to come back.",
+      about_quote:"Big. Juicy. Real. That's how we cook everything.",
+      k1_t:"Georgian cuisine", k1_d:"Chebureki, khachapuri, adjika and matsoni.",
+      k2_t:"Italian cuisine", k2_d:"Simple, honest flavours and fresh produce.",
+      k3_t:"European desserts", k3_d:"Choux, tarts and mousse cakes from TECTO Bakery.",
+      visit_kicker:"Contact", visit_t1:"Come and", visit_t2:"visit us",
+      visit_lede:"In central Daugavpils, on Mihoelsa Street. Drop in for a cheburek and coffee, or call to order.",
+      lbl_address:"Address", lbl_phone:"Phone", map_btn:"Open in Maps", route_btn:"Directions",
+      call_kicker:"Orders", call_title:"Call and order", call_text:"Questions, orders and table bookings by phone.",
+      footer_tag:"The biggest chebureki in Latvia. Georgian, Italian and European cuisine in Daugavpils.", footer_rights:"All rights reserved.",
+      page_title:"GOSHA by TECTO BAKERY - the biggest chebureki in Latvia, Daugavpils"
+    }
+  };
+
+  var htmlEl = document.documentElement;
+  var currentLang = 'lv';
+  var pageTitleEl = document.getElementById('pageTitle');
+
+  function getTheme(){ return htmlEl.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'; }
+
+  function renderMarquee(){
+    var box = document.getElementById('marquee');
+    box.innerHTML = '';
+    var items = T[currentLang].marquee;
+    for(var r = 0; r < 4; r++){
+      items.forEach(function(n){ var s = document.createElement('span'); s.textContent = n; box.appendChild(s); });
+    }
+  }
+
+  function refreshLabels(){
+    var d = T[currentLang];
+    var theme = getTheme();
+    var tt = document.getElementById('themeToggle');
+    tt.setAttribute('aria-label', theme === 'dark' ? d.theme_light : d.theme_dark);
+    tt.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+    document.getElementById('themeIcon').innerHTML = '<use href="' + (theme === 'dark' ? '#ic-sun' : '#ic-moon') + '"></use>';
+    var mt = document.getElementById('menuToggle');
+    mt.setAttribute('aria-label', mt.getAttribute('aria-expanded') === 'true' ? d.menu_close : d.menu_open);
+    var vid = document.getElementById('heroVideo');
+    document.getElementById('heroPause').setAttribute('aria-label', vid.paused ? d.video_play : d.video_pause);
+  }
+
+  function applyLang(lang){
+    if(!T[lang]) lang = 'lv';
+    currentLang = lang;
+    var d = T[lang];
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var k = el.getAttribute('data-i18n');
+      if(d[k] !== undefined) el.textContent = d[k];
+    });
+    document.getElementById('ringText').textContent = d.ring;
+    renderMarquee();
+    document.querySelectorAll('[data-lang]').forEach(function(b){
+      b.setAttribute('aria-pressed', b.getAttribute('data-lang') === lang ? 'true' : 'false');
+    });
+    htmlEl.setAttribute('lang', lang);
+    if(pageTitleEl) pageTitleEl.textContent = d.page_title;
+    try{ localStorage.setItem('gosha-lang', lang); }catch(e){}
+    refreshLabels();
+  }
+
+  document.querySelectorAll('[data-lang]').forEach(function(b){
+    b.addEventListener('click', function(){ applyLang(b.getAttribute('data-lang')); });
+  });
+
+  document.getElementById('themeToggle').addEventListener('click', function(){
+    var next = getTheme() === 'dark' ? 'light' : 'dark';
+    htmlEl.setAttribute('data-theme', next);
+    try{ localStorage.setItem('gosha-theme', next); }catch(e){}
+    refreshLabels();
+  });
+
+  var menuToggle = document.getElementById('menuToggle');
+  var mobileNav = document.getElementById('mobileNav');
+  function setMenu(open){
+    mobileNav.classList.toggle('open', open);
+    mobileNav.setAttribute('aria-hidden', open ? 'false' : 'true');
+    menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.style.overflow = open ? 'hidden' : '';
+    refreshLabels();
+  }
+  menuToggle.addEventListener('click', function(){ setMenu(!mobileNav.classList.contains('open')); });
+  mobileNav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ setMenu(false); }); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && mobileNav.classList.contains('open')) setMenu(false); });
+  window.addEventListener('resize', function(){ if(window.innerWidth >= 1024 && mobileNav.classList.contains('open')) setMenu(false); });
+
+  var vid = document.getElementById('heroVideo');
+  var pauseBtn = document.getElementById('heroPause');
+  var pauseIcon = document.getElementById('heroPauseIcon');
+  function setPauseIcon(){ pauseIcon.innerHTML = '<use href="' + (vid.paused ? '#ic-play' : '#ic-pause') + '"></use>'; pauseBtn.setAttribute('aria-pressed', vid.paused ? 'true' : 'false'); refreshLabels(); }
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){ try{ vid.pause(); }catch(e){} }
+  pauseBtn.addEventListener('click', function(){
+    if(vid.paused){ var p = vid.play(); if(p && p.catch) p.catch(function(){}); } else { vid.pause(); }
+    setPauseIcon();
+  });
+  vid.addEventListener('play', setPauseIcon);
+  vid.addEventListener('pause', setPauseIcon);
+
+  var revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, {threshold:.12, rootMargin:'0px 0px -6% 0px'});
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  var saved = 'lv';
+  try{ saved = localStorage.getItem('gosha-lang') || 'lv'; }catch(e){}
+  applyLang(saved);
+  setPauseIcon();
+})();
+</script>
+
+</body>
+</html>
